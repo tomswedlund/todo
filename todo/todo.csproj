@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ListItemViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="ListItemsUserControl.xaml">
       <SubType>Designer</SubType>

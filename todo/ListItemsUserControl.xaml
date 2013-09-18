@@ -10,8 +10,32 @@
         <todo:ListItemsViewModel />
     </UserControl.DataContext>
     
-    <ListView ItemsSource="{Binding CurrentListItems}">
-        <ListView.ItemTemplate>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="IsChecked" Value="True" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        
+                        <Border BorderThickness="2" BorderBrush="Gray" >
+                            <StackPanel>
+                                <Rectangle Width="10" Height="10" />
+                                <Path Visibility="{Binding IsChecked, Converter={StaticResource VisibilityConverter}}" Stroke="Gray" StrokeThickness="2" Data="M 2,-2.5 L 5,-0.5 L 8,-8.5" />
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+    <ItemsControl ItemsSource="{Binding CurrentListItems}">
+        <ItemsControl.ItemTemplate>
             <DataTemplate>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -19,10 +43,14 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     
-                    <CheckBox Grid.Column="0" IsChecked="{Binding Complete}" />
-                    <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                    <Border Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Grid.Column="0" IsChecked="{Binding IsChecked}" />
+                            <TextBlock Grid.Column="1" Text="{Binding ItemText}" />
+                        </StackPanel>
+                    </Border>
                 </Grid>
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 </UserControl>

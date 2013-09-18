@@ -7,12 +7,12 @@ namespace todo
     {
         public ListItemsViewModel()
         {
-            this.CurrentListItems = new ObservableCollection<ListItem>();
-            this.CurrentListItems.Add(new ListItem("list item one"));
-            this.CurrentListItems.Add(new ListItem("list item two"));
-            this.CurrentListItems.Add(new ListItem("list item three"));
+            this.CurrentListItems = new ObservableCollection<ListItemViewModel>();
+            this.CurrentListItems.Add(new ListItemViewModel(new ListItem("list item one")));
+            this.CurrentListItems.Add(new ListItemViewModel(new ListItem("list item two")));
+            this.CurrentListItems.Add(new ListItemViewModel(new ListItem("list item three")));
         }
 
-        public ObservableCollection<ListItem> CurrentListItems { get; private set; }
+        public ObservableCollection<ListItemViewModel> CurrentListItems { get; private set; }
     }
 }

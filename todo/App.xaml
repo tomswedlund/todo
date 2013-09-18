@@ -6,7 +6,7 @@
         <ResourceDictionary>
             
             
-            <Style x:Key="TitleBarButton" TargetType="{x:Type Button}">
+            <!--<Style x:Key="TitleBarButton" TargetType="{x:Type Button}">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -25,7 +25,7 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </Style>
+            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
